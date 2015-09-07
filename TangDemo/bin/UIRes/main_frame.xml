@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="300,600" mininfo="300,600" maxinfo="300,600" caption="0,0,0,40" sizebox="4,4,4,4" roundcorner="4,4,4,4">
+  <Font name="微软雅黑" size="13" bold="false" default="true" />
+  <Font name="微软雅黑" size="13" bold="true"/>
+  <!--<Default name="VScrollBar" value="button1normalimage=&quot;file='scrollbar.png' source='0,0,16,16'&quot; button1hotimage=&quot;file='scrollbar.png' source='16,0,32,16,16'&quot; button1pushedimage=&quot;file='scrollbar.png' source='32,0,48,16'&quot; button2normalimage=&quot;file='scrollbar.png' source='0,32,16,48'&quot; button2hotimage=&quot;file='scrollbar.png' source='16,32,32,48'&quot; button2pushedimage=&quot;file='scrollbar.png' source='32,32,48,48'&quot; thumbnormalimage=&quot;file='scrollbar.png' source='0,48,16,64' corner='0,2,0,2'&quot; thumbhotimage=&quot;file='scrollbar.png' source='16,48,32,64' corner='0,2,0,2'&quot; thumbpushedimage=&quot;file='scrollbar.png' source='32,48,48,64' corner='0,2,0,2'&quot; bknormalimage=&quot;file='scrollbar.png' source='0,16,16,32'&quot;" /> -->
+  <HorizontalLayout name="bg" bkimage="file='bg12.png' corner='600,200,1,1'">
+    <VerticalLayout bkimage="file='border.png' corner='5,5,5,5'" inset="1,0,1,1" hole="true">
+      <HorizontalLayout height="30">
+        <VerticalLayout width="60" inset="5,2,0,0">
+          <Label text="会议" textcolor="#000000"/>
+        </VerticalLayout>
+        <VerticalLayout />
+        <VerticalLayout width="86">
+          <Button name="settingbtn" float="true" pos="0,2,28,30" width="28" height="30" maxheight="30" maxwidth="28"  normalimage="file='panelTrB.png' source='0,0,28,30' " hotimage="file='panelTrB.png' source='0,30,28,60' "/>
+          <Button name="minbtn" visible="true" float="true" pos="28,2,57,30" width="28" height="30" maxheight="30" maxwidth="28"  normalimage="file='panelTrB.png' source='28,0,57,30' " hotimage="file='panelTrB.png' source='28,30,57,60' "  />
+          <Button name="closebtn" float="true" pos="57,2,85,30" width="28" height="30" maxheight="30" maxwidth="28"  normalimage="file='panelTrB.png' source='57,0,86,30' " hotimage="file='panelTrB.png' source='57,30,86,60'"  />
+        </VerticalLayout>
+      </HorizontalLayout>
+      <HorizontalLayout height="100">
+        <VerticalLayout width="93" inset="0,0,0,0" padding="10,0,0,0">
+          <Button name="deskSharebtn" width="93" height="100" normalimage="file='gcShare.jpg' source='0,0,93,100' " hotimage="file='gcShare.jpg' source ='0,100,93,200'" />
+		  <Text text="共享桌面" float="true" pos="20,70,90,100" textcolor="#000000" />
+        </VerticalLayout>
+		
+		<VerticalLayout inset="0,0,0,0">
+          <Button name="docSharebtn" width="94" height="100" normalimage="file='gcShare.jpg' source='93,0,186,100'" hotimage="file='gcShare.jpg' source ='93,100,186,200'" />
+		  <Text text="共享文档" float="true" pos="20,70,90,100" textcolor="#0000ff" />
+        </VerticalLayout>
+		
+		<VerticalLayout width="93" inset="0,0,0,0" padding = "0,0,10,0">
+          <Button name="whiteBoardbtn" height="100" normalimage="file='gcShare.jpg' source='186,0,280,100'" hotimage="file='gcShare.jpg' source ='186,100,280,200'" />
+		  <Text text="共享白板" float="true" pos="20,70,90,100" textcolor="#000000" />
+        </VerticalLayout>
+      </HorizontalLayout>
+	  
+	  <HorizontalLayout height="50" >
+		<Button name="participantbtn"  bkimage="file='chlist.gif' corner='1,1,1,1'" width="12" height="12" padding="10,19,0,19"/>
+		<Text name="participantTxt" text="参会人" textcolor="#000000" padding="2,15,0,15" width="30" />
+		<Control />
+		<Button name="adduserbtn"  normalimage="file='addUser.png' mask='0x00000000'" hotimage ="file='addUserHover.png' " width="33" height="33" padding="0,7,0,10"/>
+	  </HorizontalLayout>
+	  
+      <VerticalLayout>
+        <TabLayout name="tabs" bkimage="file='bg_chlist.png' corner='2,2,2,2'" inset="0,0,0,0">
+            <FriendList name="participants" header="hidden" itemshowhtml="true" vscrollbar="true"  />
+        </TabLayout> 
+      </VerticalLayout>
+      <VerticalLayout height="100">
+        <VerticalLayout height="50" padding="5,5,15,0">
+			<HorizontalLayout>
+				<HorizontalLayout />
+				<HorizontalLayout width="50" padding="0,0,0,0">
+					<Button   height="20" text="全体静音" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"  align="center" />
+				</HorizontalLayout>
+			</HorizontalLayout>
+
+			<HorizontalLayout>
+				<HorizontalLayout padding="0,0,0,0">
+					<Text name="voiceConnTip" visible="false" width="100" height="20" text="尚未开启语音" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center"  />
+				</HorizontalLayout>
+				<HorizontalLayout />
+				<HorizontalLayout padding="0,0,0,0" width="50">
+					<Button  height="20" bKcolor="#40B9BC" text="开启语音" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+				</HorizontalLayout>
+			</HorizontalLayout>
+			
+        </VerticalLayout>
+
+        <VerticalLayout height="50" padding="5,5,0,0">
+          <HorizontalLayout>
+            <HorizontalLayout padding="0, 0, 0, 0">
+              <Button width="40" padding="10, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_novoice.png' mask='0xffffffff'" hotimage="file='icon_novoiceHover.png' mask='0xffffffff'" pushedimage="file='icon_novoiceHover.png' mask='0xffffffff'" />
+              <Button width="40" padding="20, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_jiyao.png' mask='0xffffffff'" hotimage="file='icon_jiyaoHover.png' mask='0xffffffff'" pushedimage="file='icon_jiyaoHover.png' mask='0xffffffff'" />
+              <Button width="40" padding="20, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_chat.png' mask='0xffffffff'" hotimage="file='icon_chatHover.png' mask='0xffffffff'" pushedimage="file='icon_chat.png' mask='0xffffffff'" />
+            </HorizontalLayout>
+          </HorizontalLayout>
+        </VerticalLayout>
+      </VerticalLayout>
+    </VerticalLayout>
+  </HorizontalLayout>
+</Window>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="300,200" caption="0,0,0,260">
+    <Font name="Arial" size="12" bold="false" italic="false" default="true" />
+    <Font name="Arial" size="16" bold="false" italic="false" />
+    <VerticalLayout width="300" height="200" bkcolor="#FFFFFFFF" bordercolor="#000F88C1">
+        <HorizontalLayout height="30" bkcolor="#FF46B9F0">
+            <HorizontalLayout>
+                <Label name="lblCaption" text="关于" bkimage="file=&apos;logo_16.png&apos; dest=&apos;5,5,21,21&apos; source=&apos;0,0,16,16&apos;" textpadding="25,5,0,0" textcolor="#00FFFBF0" disabledtextcolor="#FFA7A6AA" font="1" align="left" endellipsis="true" />
+            </HorizontalLayout>
+            <HorizontalLayout width="70">
+                <Button name="btnClose" tooltip="Minimize" float="true" pos="28,2,0,0" width="28" height="30" maxheight="30" maxwidth="28"  textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='panelTrB.png' source='57,0,86,30' " hotimage="file='panelTrB.png' source='57,30,86,60'" />
+            </HorizontalLayout>
+        </HorizontalLayout>
+        <VerticalLayout bkcolor="#FFF6FBFE">
+            <Text name="lblMessage" text="RayDownlaod 5.0 (5001)" float="true" pos="24,30,0,0" width="160" height="23" textpadding="2,0,2,0" textcolor="#00333333" disabledtextcolor="#FFA7A6AA" font="0" align="leftwrap" />
+            <Text name="lblCheckbox" text="Copyright © 2014 WOODTABLE Technolgy. All Rights Reserved." float="true" pos="24,50,0,0" width="160" height="46" textpadding="2,0,2,0" textcolor="#00333333" disabledtextcolor="#FFA7A6AA" font="0" align="leftwrap" />
+        </VerticalLayout>
+        <HorizontalLayout width="300" height="30" bkcolor="#FFE1ECF2">
+            <Button name="btnYes" text="OK" float="true" pos="200,2,0,0" width="68" height="27" textcolor="#00333333" disabledtextcolor="#FFA7A6AA" font="0" align="center" normalimage="file=&apos;btn.png&apos; source=&apos;0,0,68,27&apos; corner=&apos;2,2,2,2&apos;" hotimage="file=&apos;btn.png&apos; source=&apos;68,0,136,27&apos; corner=&apos;2,2,2,2&apos;" pushedimage="file=&apos;btn.png&apos; source=&apos;136,0,204,27&apos; corner=&apos;2,2,2,2&apos;" focusedimage="file=&apos;btn.png&apos; source=&apos;272,0,340,27&apos; corner=&apos;2,2,2,2&apos;" disabledimage="file=&apos;btn.png&apos; source=&apos;204,0,272,27&apos; corner=&apos;2,2,2,2&apos;" />
+        </HorizontalLayout>
+    </VerticalLayout>
+</Window>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TangDemo", "TangDemo\TangDemo.vcxproj", "{906BCFDB-96EC-4F84-BC96-9641F71924E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DuiLib", "DuiLib\DuiLib.vcxproj", "{074622E9-1D83-48B6-955C-E76DE8EA3C45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{906BCFDB-96EC-4F84-BC96-9641F71924E8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{906BCFDB-96EC-4F84-BC96-9641F71924E8}.Debug|Win32.Build.0 = Debug|Win32
+		{906BCFDB-96EC-4F84-BC96-9641F71924E8}.Release|Win32.ActiveCfg = Release|Win32
+		{906BCFDB-96EC-4F84-BC96-9641F71924E8}.Release|Win32.Build.0 = Release|Win32
+		{074622E9-1D83-48B6-955C-E76DE8EA3C45}.Debug|Win32.ActiveCfg = Debug|Win32
+		{074622E9-1D83-48B6-955C-E76DE8EA3C45}.Debug|Win32.Build.0 = Debug|Win32
+		{074622E9-1D83-48B6-955C-E76DE8EA3C45}.Release|Win32.ActiveCfg = Release|Win32
+		{074622E9-1D83-48B6-955C-E76DE8EA3C45}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

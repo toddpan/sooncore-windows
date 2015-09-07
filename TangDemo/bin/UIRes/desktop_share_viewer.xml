@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="800,600" caption="0,0,0,40" sizebox="4,4,4,4" roundcorner="4,4,4,4">
+  <Font name="微软雅黑" size="15" bold="false" default="true" />
+  <Font name="微软雅黑" size="12" bold="true"/>
+
+<HorizontalLayout name="bg" bkimage="file='images\popmain.jpg' corner='5,5,5,5'" hole= "true">
+  <VerticalLayout >
+		  <HorizontalLayout name="topBorder" visible="true" height="40" bkimage="file='images\topBg.png' source='0,0,60,40' xtiled='true' ytiled='true'"   hole="false">
+			  <VerticalLayout width="23" padding="5,10,0,0">
+				  <Button name="logo" width="22" height="22" bkimage="file='images\floatLogo.png'"/>
+			  </VerticalLayout>
+			  <VerticalLayout width="150" inset="0,8,0,0">
+				  <Label text="{name}在共享" textcolor="#FFFFFFFF"/>
+			  </VerticalLayout>
+			  <VerticalLayout />
+			  <VerticalLayout width="56" inset="0,1,0,0">
+				  <Button name="minbtn" float="true" pos="0,5,28,5" width="28" height="30"  normalimage="file='panelTrB.png' source='28,0,57,30' " hotimage="file='panelTrB.png' source='28,30,57,60' "  />
+				  <Button name="closebtn" float="true" pos="28,5,56,5" width="28" height="30" normalimage="file='panelTrB.png' source='57,0,86,30' " hotimage="file='panelTrB.png' source='57,30,86,60'"/>
+			  </VerticalLayout>
+		  </HorizontalLayout>
+		  <HorizontalLayout height="40" bkimage="file='images\toolbar_bg.png' xtiled='true' ytiled='true'">
+			  <VerticalLayout width="40" inset="2,0,0,0">
+				  <Button name="saveBtn" tooltip="保存" width="40" height="40" normalimage="file='images\gc_tools.png' source='0,0,40,40' " hotimage="file='images\gc_tools.png' source='0,40,40,80'"/>
+			  </VerticalLayout>
+			  <VerticalLayout width="1" height="20" padding="0,10,0,0" bkimage="file='images\gc_sep.gif' "/>
+			  <VerticalLayout width="142" inset="0,0,0,0">
+				  <HorizontalLayout>
+					  <Button name="brushpenBtn" tooltip="画笔" width="40" height="40" normalimage="file='images\gc_tools.png' source='80,0,120,40' " hotimage="file='images\gc_tools.png' source='80,40,120,80'"/>
+					  <Button name="selectbrushBtn" padding="0,17,0,0" tooltip="画笔" width="11" height="6" normalimage="file='images\arrowSelect.gif'" hotimage="file='images\arrowWhite.gif'"/>
+					  <Button name="laserpenBtn" tooltip="激光笔" width="40" height="40" normalimage="file='images\gc_tools.png' source='120,0,160,40' " hotimage="file='images\gc_tools.png' source='120,40,160,80'"/>
+					  <Button name="eraserBtn" tooltip="橡皮擦" width="40" height="40" normalimage="file='images\gc_tools.png' source='160,0,200,40' " hotimage="file='images\gc_tools.png' source='160,40,200,80'"/>
+					  <Button name="selecteraserBtn" padding="0,17,0,0" tooltip="橡皮擦" width="11" height="6" normalimage="file='images\arrowSelect.gif'" hotimage="file='images\arrowWhite.gif'"/>
+				  </HorizontalLayout>
+			  </VerticalLayout>
+			  <VerticalLayout width="100" inset="0,8,0,0">
+				  <Option name="deskshare_tab"  textcolor="#FFFFFFFF" text="共享桌面" bordersize="0" textpadding="0,0,0,0" showhtml="true" align="center" />
+			  </VerticalLayout>
+			  <VerticalLayout />
+			  <VerticalLayout width="90">
+				<HorizontalLayout>
+				  <Button name="btnPin" 	visible="false"	float="true" pos="0,0,40,0" tooltip="钉住工具栏" width="40" height="40" normalimage="file='images\gc_tools.png' source='280,0,320,40' " hotimage="file='images\gc_tools.png' source='280,40,320,80'" />
+				  <Button name="fullScreenBtn"  float="true" pos="40,0,80,0" tooltip="全屏" width="40" height="40" normalimage="file='images\gc_tools.png' source='200,0,240,40' " hotimage="file='images\gc_tools.png' source='200,40,240,80'"/>
+				</HorizontalLayout>
+			  </VerticalLayout>
+			 
+		  </HorizontalLayout>
+
+      <HorizontalLayout>
+        <VerticalLayout>
+           <WebBrowser  visible="false" name="htmlView" float="true" width="400" height="300" align="true" clsid="{8856F961-340A-11D0-A96B-00C04FD705A2}" delaycreate="false"/>
+        </VerticalLayout>
+      </HorizontalLayout>
+  </VerticalLayout>
+
+</HorizontalLayout>
+</Window>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="120,160">
+	<Container bkcolor="#FFFFFFFF" bordercolor="#FF0F88C1">
+        <List name="list" bkimage="file=&apos;menu_bk.png&apos; corner=&apos;50,1,1,1&apos;" bkcolor="#FFFFFFFF"  header="hidden">
+			<ListContainerElement name="videocheckItem" height="31"  itemselectedbkcolor="#FF0086F5" itemhotbkcolor="#FF0086F5" itemdisabledbkcolor="#FFFFFFFF" >
+				<HorizontalLayout >
+					<Control width="15" padding="3,0,0,0" bkimage="file='settingMenu.gif' source='0,0,15,31'" />
+					<Label text="音视频检测" padding="10,8,0,0" textcolor="#00444444" disabledtextcolor="#FFA7A6AA" font="0" align="left" endellipsis="true" />
+				</HorizontalLayout>
+			</ListContainerElement>
+			
+			<ListContainerElement  height="2" bkimage="file=&apos;menu_bk_seperator.png&apos; corner=&apos;28,0,0,0&apos;">
+			</ListContainerElement>
+			
+			<ListContainerElement name="onlineseviceItem" height="31"  itemselectedbkcolor="#FF0086F5" itemhotbkcolor="#FF0086F5" itemdisabledbkcolor="#FFFFFFFF" >
+				<HorizontalLayout >
+					<Control width="15" padding="3,0,0,0" bkimage="file='settingMenu.gif' source='0,31,15,62'"/>
+					<Label name="onlinesevicelbl" text="在线客服" padding="10,8,0,0" textcolor="#00444444" disabledtextcolor="#FFA7A6AA" font="0" align="left" endellipsis="true" />
+				</HorizontalLayout>
+			</ListContainerElement>
+			
+			<ListContainerElement  height="2" bkimage="file=&apos;menu_bk_seperator.png&apos; corner=&apos;28,0,0,0&apos;">
+			</ListContainerElement>
+			
+			<ListContainerElement name="settingItem" height="31"  itemselectedbkcolor="#FF0086F5" itemhotbkcolor="#FF0086F5" itemdisabledbkcolor="#FFFFFFFF" >
+				<HorizontalLayout >
+					<Control  width="15" padding="3,0,0,0" bkimage="file='settingMenu.gif' source='0,62,15,92'"/>
+					<Label name="settinglbl" text="设置" padding="10,8,0,0" textcolor="#00444444" disabledtextcolor="#FFA7A6AA" font="0" align="left" endellipsis="true" />
+				</HorizontalLayout>
+			</ListContainerElement>
+			
+			<ListContainerElement  height="2" bkimage="file=&apos;menu_bk_seperator.png&apos; corner=&apos;28,0,0,0&apos;">
+			</ListContainerElement>
+			
+			<ListContainerElement name="questionItem" height="31"  itemselectedbkcolor="#FF0086F5" itemhotbkcolor="#FF0086F5" itemdisabledbkcolor="#FFFFFFFF" >
+				<HorizontalLayout >
+					<Control  width="15" padding="3,0,0,0" bkimage="file='settingMenu.gif' source='0,92,15,123'" />
+					<Label name="questionlbl" text="问题反馈" padding="10,8,0,0" textcolor="#00444444" disabledtextcolor="#FFA7A6AA" font="0" align="left" endellipsis="true" />
+				</HorizontalLayout>
+			</ListContainerElement>
+			
+			<ListContainerElement  height="2" bkimage="file=&apos;menu_bk_seperator.png&apos; corner=&apos;28,0,0,0&apos;">
+			</ListContainerElement>
+			
+			<ListContainerElement name="aboutItem" height="31"  itemselectedbkcolor="#FF0086F5" itemhotbkcolor="#FF0086F5" itemdisabledbkcolor="#FFFFFFFF" >
+				<HorizontalLayout >
+					<Control width="15" padding="3,0,0,0" bkimage="file='settingMenu.gif' source='0,123,15,154'" />
+					<Label name="aboutlbl" text="关于" padding="10,8,0,0" textcolor="#00444444" disabledtextcolor="#FFA7A6AA" font="0" align="left" endellipsis="true" />
+				</HorizontalLayout>
+			</ListContainerElement>
+        </List>
+    </Container>
+</Window>

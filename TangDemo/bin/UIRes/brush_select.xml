@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window roundcorner="4,4" size="114,114" transparency="0">
+  <VerticalLayout bordersize="0" width="114" height="114" bkimage="file='images\bg_brush.jpg' mask='0xffffffff'">
+      <HorizontalLayout>
+        <Button name="brush_black" width="38" height="38" normalimage="file='images\brush.png' source='0,0,38,38'" hotimage="file='images\brush.png' source='0,38,38,76'" />
+        <Button name="brush_blackblue"  width="38" height="38" normalimage="file='images\brush.png' source='38,0,76,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='38,38,76,76' mask='0xffffffff'"  />
+        <Button name="brush_darkblue"  width="38" height="38" normalimage="file='images\brush.png' source='76,0,114,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='76,38,114,76' mask='0xffffffff'"  />
+      </HorizontalLayout>
+	  <HorizontalLayout>
+        <Button name="brush_green" width="38" height="38" normalimage="file='images\brush.png' source='114,0,152,38'" hotimage="file='images\brush.png' source='114,38,152,76'" />
+        <Button name="bk_005"  width="38" height="38" normalimage="file='images\brush.png' source='152,0,190,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='152,38,190,76' mask='0xffffffff'"  />
+        <Button name="bk_006"  width="38" height="38" normalimage="file='images\brush.png' source='190,0,228,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='190,38,228,76' mask='0xffffffff'"  />
+      </HorizontalLayout>
+	  <HorizontalLayout>
+        <Button name="brush_d" width="38" height="38" normalimage="file='images\brush.png' source='228,0,266,38'" hotimage="file='images\brush.png' source='228,38,266,76'" />
+        <Button name="bk_007"  width="38" height="38" normalimage="file='images\brush.png' source='266,0,304,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='266,38,304,76' mask='0xffffffff'"  />
+        <Button name="bk_008"  width="38" height="38" normalimage="file='images\brush.png' source='304,0,342,38' mask='0xffffffff'" hotimage="file='images\brush.png' source='304,38,342,76' mask='0xffffffff'"  />
+      </HorizontalLayout>
+  </VerticalLayout>
+</Window>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="200,40" caption="0,0,0,0">
+    <Font name="Arial" size="12" bold="false" italic="false" />
+    <Font name="Arial" size="16" bold="false" italic="false" default="true" />
+    <HorizontalLayout bkimage="deskshare_bg.png" >
+		<HorizontalLayout width="40" height="40">
+			<Button name="btnCommnet" tooltip="打开批注" width="40" height="40" align="center" normalimage="file='gc_tools2.png' source='80,0,120,40' " hotimage="file='gc_tools2.png' source='80,40,120,80'" />
+		</HorizontalLayout>
+		<HorizontalLayout>
+			<Button name="btnExitShare" hotbkcolor="#FF0086F5" text="退出共享" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" tooltip="退出共享" />
+		</HorizontalLayout>
+		<HorizontalLayout width="40" height="40">
+			<Button name="btnStable" tooltip="取消钉住" width="40" height="40" align="center" normalimage="file='gc_tools2.png' source='320,0,360,40' " hotimage="file='gc_tools2.png' source='320,40,360,80'" />
+			<!--<Button name="btnPeg" tooltip="钉住工具栏" visible= "false" width="40" height="40"  normalimage="file='gc_tools2.png' source='280,0,320,40' " hotimage="file='gc_tools2.png' source='280,40,320,80'" /> -->
+		</HorizontalLayout>
+	</HorizontalLayout>
+</Window>

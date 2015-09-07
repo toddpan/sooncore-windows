@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{15eff80f-bdb6-49fd-af7f-6ee93a61f8bb}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{806d6d21-538f-4e78-be85-848ad934f4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{7cbd8587-cd3b-4870-be15-2d1e1255d1c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{09a03183-1eb9-4f7c-9474-1a72f8b740df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\Windows">
+      <UniqueIdentifier>{e200eb3b-efb3-46ac-8012-2ac67e0e62b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{70997213-c626-4bcd-93e7-74d9fb1db8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\windows">
+      <UniqueIdentifier>{b1081551-8ad2-46f9-aec4-28cf33a7b38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\UICommon">
+      <UniqueIdentifier>{6c267fa8-b91e-4635-973f-19cebf5669b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\UICommon">
+      <UniqueIdentifier>{618d067a-67bf-4f2f-a82c-9b5f380ad1ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="debug.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\main_frame.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\setting_frame.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\about_frame.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\participants_list.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="observer_impl_base.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\desktop_share.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\desktop_share_viewer.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\brush_select.hpp">
+      <Filter>Header Files\UI\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="UICommon\UIListCommonDefine.hpp">
+      <Filter>Header Files\UI\UICommon</Filter>
+    </ClInclude>
+    <ClInclude Include="UICommon\webEventHanderEx.hpp">
+      <Filter>Header Files\UI\UICommon</Filter>
+    </ClInclude>
+    <ClInclude Include="UICommon\WindowWithShadow.hpp">
+      <Filter>Header Files\UI\UICommon</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\main_frame.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\setting_frame.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\about_frame .cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\participants_list.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\desktop_share.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\desktop_share_viewer.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\brush_select.cpp">
+      <Filter>Source Files\UI\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="UICommon\UIListCommonDefine.cpp">
+      <Filter>Source Files\UI\UICommon</Filter>
+    </ClCompile>
+    <ClCompile Include="UICommon\webEventHanderEx .cpp">
+      <Filter>Source Files\UI\UICommon</Filter>
+    </ClCompile>
+    <ClCompile Include="UICommon\WindowWithShadow.cpp">
+      <Filter>Source Files\UI\UICommon</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TangDemo.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
