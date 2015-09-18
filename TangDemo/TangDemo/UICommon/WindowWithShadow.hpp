@@ -1,7 +1,7 @@
 #pragma once
 using namespace DuiLib;
 
-class CWindowWithShadow : public WindowImplBase
+class CWindowWithShadow : public WindowImplBase //,public CHorizontalLayoutUI
 {
 public:
 	CWindowWithShadow(void);

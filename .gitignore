@@ -1,0 +1,13 @@
+*.cache
+*.log
+TangDemo/TangDemo/Debug/TangDemo.write.1.tlog
+*.lastbuildstate
+*.idb
+*.obj
+*.manifest
+*.tlog
+*.ipch
+*.ilk
+*.ilk
+*.sdf
+*.pdb
