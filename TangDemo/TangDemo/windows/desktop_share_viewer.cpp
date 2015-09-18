@@ -10,6 +10,35 @@ const TCHAR* kTopHiddenLayoutName = _T("topBorder");
 const TCHAR* kFullScreenButtonName = _T("fullScreenBtn");
 const TCHAR* kPinFrameButtonName = _T("btnPin");
 
+
+DUI_BEGIN_MESSAGE_MAP(CDeskShareViewer,CWindowWithShadow)
+	//DUI_ON_MSGTYPE(DUI_MSGTYPE_WINDOWINIT,OnWinInit)
+	DUI_ON_MSGTYPE(L"mousehover",OnMouseHoverEvent)
+DUI_END_MESSAGE_MAP()
+
+CDynamicHorizontalLayoutUI::CDynamicHorizontalLayoutUI()
+{
+}
+
+void CDynamicHorizontalLayoutUI::DoEvent(TEventUI& event)
+{
+	CLabelUI *pTitle = dynamic_cast<CLabelUI*>(CDeskShareViewer::FindChild(this, L"dynamicLayout"));
+	if (event.Type == UIEVENT_BUTTONUP)
+	{
+		GetManager()->SendNotify(this, L"mousehover", 0, 0, true);
+	}
+	else if(event.Type == UIEVENT_MOUSEENTER)
+	{
+		pTitle->SetTextColor(0xFFffffff);
+	}
+	else if(event.Type == UIEVENT_MOUSELEAVE)
+	{
+		pTitle->SetTextColor(0xFF555555);
+	}
+	__super::DoEvent(event);
+}
+
+
 CDeskShareViewer::CDeskShareViewer()
 	:m_bTopFrameIsHidden(false)
 {}
@@ -24,6 +53,42 @@ LPCTSTR CDeskShareViewer::GetWindowClassName() const
 
 CControlUI* CDeskShareViewer::CreateControl(LPCTSTR pstrClass)
 {
+	if (_tcsicmp(pstrClass,_T("HorizontalLayout")) ==0 ) //HorizontalLayout
+		return new CDynamicHorizontalLayoutUI;
+	return __super::CreateControl(pstrClass);
+}
+
+void CDeskShareViewer::OnMouseHoverEvent(TNotifyUI& msg)
+{
+	MessageBox(m_hWnd,_T("mouse hover"),_T("caption"),0);
+}
+
+CControlUI* CDeskShareViewer::FindChild( CContainerUI* pContainer, LPCTSTR strName )
+{
+	if (!pContainer)
+		return NULL;
+
+	if (_tcsicmp(strName, pContainer->GetName()) == 0)
+	{
+		return pContainer;
+	}
+	for (int i = 0; ; i ++)
+	{
+		CControlUI* pControl = pContainer->GetItemAt(i);
+		if (pControl == NULL)
+			return NULL;
+		if ( _tcsicmp(strName ,pControl->GetName()) == 0)
+		{
+			return pControl;
+		}
+		CContainerUI* pContainerSub = dynamic_cast<CContainerUI*>(pControl);
+		if (pContainerSub)
+		{
+			CControlUI* p = FindChild(pContainerSub, strName);
+			if (p)
+				return p;
+		}
+	}
 	return NULL;
 }
 
@@ -112,16 +177,53 @@ LRESULT CDeskShareViewer::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		return 0;
 	}
+
+	//if (uMsg == WM_MOUSELEAVE)
+	//{
+	//	 
+	//}
+	//else if (uMsg == WM_MOUSEHOVER)
+	//{
+	//	POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+
+	//}
+	//else if(uMsg == WM_MOUSELEAVE)
+	//{
+	//	POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+	//}
 	return __super::HandleMessage(uMsg, wParam, lParam);
 }
 
+
+static bool OnDynamicLayoutEvent(void* event)
+{
+	if( ((TEventUI*)event)->Type == UIEVENT_MOUSEHOVER ) 
+	{
+		CControlUI* pButton = ((TEventUI*)event)->pSender;
+		if( pButton != NULL ) 
+		{
+			//CHorizontalLayoutUI* pListElement = (CHorizontalLayoutUI*)(pButton->GetTag());
+			//if( pListElement != NULL ) pListElement->DoEvent(*(TEventUI*)event);
+		}
+	}
+	else if( ((TEventUI*)event)->Type == UIEVENT_MOUSELEAVE ) 
+	{
+		CControlUI* pButton = ((TEventUI*)event)->pSender;
+	}
+	return true;
+}
 void CDeskShareViewer::InitWindow()
 {
-	//SendMessage(WM_SYSCOMMAND, SC_MAXIMIZE, 0);
 }
 
 void CDeskShareViewer::OnPrepare(TNotifyUI& msg)
 {
+	CHorizontalLayoutUI* pDynamicLayout = static_cast<CHorizontalLayoutUI*>(m_PaintManager.FindControl(_T("dynamicLayout")));
+	if (pDynamicLayout)
+	{
+		pDynamicLayout->OnEvent += MakeDelegate(&OnDynamicLayoutEvent);
+	}
+
 	CWebBrowserUI* pActiveXUI = static_cast<CWebBrowserUI*>(m_PaintManager.FindControl(_T("htmlView")));
 	if( pActiveXUI ) 
 	{
@@ -196,6 +298,8 @@ void CDeskShareViewer::Notify(TNotifyUI& msg)
 					pPinBtn->SetNormalImage(_T("file='images\\gc_tools.png' source='280,0,320,40'"));
 					pPinBtn->SetHotImage(_T("file='images\\gc_tools.png' source='280,40,320,80'"));
 				}
+
+				//::SetWindowPos(m_hWnd, NULL, 0,-30, -1, -1, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
 			}
 			else
 			{
