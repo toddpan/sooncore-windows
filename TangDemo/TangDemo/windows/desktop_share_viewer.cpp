@@ -55,6 +55,7 @@ CControlUI* CDeskShareViewer::CreateControl(LPCTSTR pstrClass)
 {
 	if (_tcsicmp(pstrClass,_T("HorizontalLayout")) ==0 ) //HorizontalLayout
 		return new CDynamicHorizontalLayoutUI;
+
 	return __super::CreateControl(pstrClass);
 }
 

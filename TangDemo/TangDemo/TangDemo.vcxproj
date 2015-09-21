@@ -68,7 +68,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="debug.hpp" />
-    <ClInclude Include="observer_impl_base.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="UICommon\UIListCommonDefine.hpp" />
@@ -81,6 +80,7 @@
     <ClInclude Include="windows\main_frame.hpp" />
     <ClInclude Include="windows\setting_frame.hpp" />
     <ClInclude Include="windows\participants_list.hpp" />
+    <ClInclude Include="windows\video_frame.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp" />
@@ -96,6 +96,7 @@
     <ClCompile Include="windows\main_frame.cpp" />
     <ClCompile Include="windows\setting_frame.cpp" />
     <ClCompile Include="windows\participants_list.cpp" />
+    <ClCompile Include="windows\video_frame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TangDemo.rc" />
