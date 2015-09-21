@@ -52,7 +52,7 @@ LPCTSTR MainFrame::GetWindowClassName() const
 
 CControlUI* MainFrame::CreateControl(LPCTSTR pstrClass)
 {
-	if (_tcsicmp(pstrClass, _T("FriendList")) == 0)
+	if (_tcsicmp(pstrClass, _T("ParticipantList")) == 0)
 	{
 		return new CPartiaipantList(m_PaintManager);
 	}
@@ -145,7 +145,7 @@ void MainFrame::OnExit(TNotifyUI& msg)
 void MainFrame::InitWindow()
 {}
 
-void MainFrame::UpdateFriendsList()
+void MainFrame::UpdateParticipantList()
 {
 	CPartiaipantList* pFriendsList = static_cast<CPartiaipantList*>(m_PaintManager.FindControl(kFriendsListControlName));
 	if (pFriendsList != NULL)
@@ -169,30 +169,26 @@ void MainFrame::UpdateFriendsList()
 		item.folder = false;		
 		item.logo = _T("man.png");
 		item.nick_name = _T("tojen");
-		item.video_icon  = _T("file='videoStatus.png' source='0,0,16,16'");
-		item.video_icon_hot = _T("file='videoStatus.png' source='0,32,16,48'");
+		item.eVideoStatus = PtiptListItemInfo::CAMERA_Enable;
+		item.eVoiceStatus = PtiptListItemInfo::VOICE_Enable;
+
+		/*item.voice_icon  = _T("file='images\\voiceMute.png'");
+		item.voice_icon_hot = _T("file='images\\voiceMuteHover.png'");
+
+		item.video_icon  = _T("file='images\\openCamera.png'");
+		item.video_icon_hot = _T("file='images\\openCameraHover.png'");*/
 		item.description = _T("tojen.me@gmail.com");
 
 		myself_info_ = item;
 
 		pFriendsList->AddNode(item, root_parent_);
 		friends_.push_back(item);
-
-        item.id = _T("2");
-        item.folder = false;
-        item.logo = _T("default.png");
-        item.nick_name = _T("wangchyz");
-        item.description = _T("wangchyz@gmail.com");
-		item.video_icon  = _T("file='videoStatus.png' source='0,0,16,16'");
-		item.video_icon_hot = _T("file='videoStatus.png' source='0,32,16,48'");
-        pFriendsList->AddNode(item, root_parent_);
-        friends_.push_back(item);
 	}
 }
 
 void MainFrame::OnPrepare(TNotifyUI& msg)
 {
-	UpdateFriendsList();
+	UpdateParticipantList();
 }
 
 LRESULT MainFrame::HandleMessage( UINT uMsg, WPARAM wParam, LPARAM lParam )
@@ -295,8 +291,10 @@ void MainFrame::Notify(TNotifyUI& msg)
 				item.logo = _T("man.png");
 				item.nick_name = _T("tojen");
 				item.description = _T("tojen.me@gmail.com");
-				item.video_icon  = _T("file='videoStatus.png' source='0,0,16,16'");
-				item.video_icon_hot = _T("file='videoStatus.png' source='0,32,16,48'");
+				item.eVideoStatus = PtiptListItemInfo::CAMERA_CLOSE;
+				item.eVoiceStatus = PtiptListItemInfo::VOICE_CLOSE;
+				//item.video_icon  = _T("file='videoStatus.png' source='0,0,16,16'");
+				//item.video_icon_hot = _T("file='videoStatus.png' source='0,32,16,48'");
 				friends_.push_back(item);
 				pFriendsList->AddNode(item,root_parent_);
 			}
@@ -316,11 +314,9 @@ void MainFrame::Notify(TNotifyUI& msg)
 			else
 			{
 				CDeskShareViewer* pDeskViewer = new CDeskShareViewer;
-
 				pDeskViewer->Create(NULL, _T("DesktopShareView"), UI_WNDSTYLE_FRAME | WS_POPUP,  NULL, 0, 0, 0, 0);
 
 				//skin_changed_observer_.AddReceiver(pChatDialog);
-
 				pDeskViewer->CenterWindow();
 				::ShowWindow(*pDeskViewer, SW_MAXIMIZE);
 			}

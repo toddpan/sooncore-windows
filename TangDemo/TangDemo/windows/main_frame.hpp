@@ -39,8 +39,7 @@ protected:
 	void OnTimer(TNotifyUI& msg);
 
 private:
-
-	void UpdateFriendsList();
+	void UpdateParticipantList();
 private:
 	int bk_image_index_;
 

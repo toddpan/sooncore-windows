@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+  <ListContainerElement name="participantItem">
+      <VerticalLayout height="40">
+        <HorizontalLayout>
+          <VerticalLayout name="logo_container" width="50">
+            <Button name="logo" width="32" height="32" padding = "0,4,0,0"/>
+          </VerticalLayout>
+          <VerticalLayout >
+            <HorizontalLayout>
+              <Label name="nickname" bordersize="0" width="120" textcolor="#FF000000" disabledtextcolor="#FF808080" />
+			  <Button name="voiceBtn" width="24" height="24" padding = "10,8,0,0" />
+			  <Button name="videoBtn" width="24" height="24" padding = "10,8,0,0" />
+            </HorizontalLayout>
+          </VerticalLayout>
+		  
+        </HorizontalLayout>
+      </VerticalLayout>
+  </ListContainerElement>
+</Window>

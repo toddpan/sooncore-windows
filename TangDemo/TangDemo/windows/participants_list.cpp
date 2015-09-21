@@ -1,11 +1,21 @@
 #include "stdafx.h"
+#include <memory>
 #include "participants_list.hpp"
+#include "video_frame.hpp"
 
 namespace DuiLib
 {
+const int kParticipantListItemNormalHeight = 40;
+const int kParticipantListItemSelectedHeight = 50;
 
-const int kFriendListItemNormalHeight = 32;
-const int kFriendListItemSelectedHeight = 40;
+const TCHAR* const kLogoButtonControlName = _T("logo");
+const TCHAR* const kLogoContainerControlName = _T("logo_container");
+const TCHAR* const kVideoContainerName = _T("video_container");
+const TCHAR* const kVideoButtonName = _T("videoBtn");
+const TCHAR* const kVoiceButtonName = _T("voiceBtn");
+const TCHAR* const kNickNameControlName = _T("nickname");
+const TCHAR* const kDescriptionControlName = _T("description");
+const TCHAR* const kOperatorPannelControlName = _T("operation");
 
 
 CPartiaipantList::CPartiaipantList(CPaintManagerUI& paint_manager)
@@ -174,16 +184,10 @@ Node* CPartiaipantList::GetRoot()
 	return root_node_;
 }
 
-const TCHAR* const kLogoButtonControlName = _T("logo");
-const TCHAR* const kLogoContainerControlName = _T("logo_container");
-const TCHAR* const kVideoContainerName = _T("video_container");
-const TCHAR* const kVideoButtonName = _T("videoStatus");
-const TCHAR* const kNickNameControlName = _T("nickname");
-const TCHAR* const kDescriptionControlName = _T("description");
-const TCHAR* const kOperatorPannelControlName = _T("operation");
-
-static bool OnLogoButtonEvent(void* event) {
-	if( ((TEventUI*)event)->Type == UIEVENT_BUTTONDOWN ) {
+static bool OnLogoButtonEvent(void* event)
+{
+	if( ((TEventUI*)event)->Type == UIEVENT_BUTTONDOWN ) 
+	{
 		CControlUI* pButton = ((TEventUI*)event)->pSender;
 		if( pButton != NULL ) {
 			CListContainerElementUI* pListElement = (CListContainerElementUI*)(pButton->GetTag());
@@ -193,15 +197,34 @@ static bool OnLogoButtonEvent(void* event) {
 	return true;
 }
 
-static bool OnVideoButtonEvent(void* event) {
-	//if( ((TEventUI*)event)->Type == UIEVENT_BUTTONDOWN ) {
-	//	CControlUI* pButton = ((TEventUI*)event)->pSender;
-	//	if( pButton != NULL ) {
-	//		CListContainerElementUI* pListElement = (CListContainerElementUI*)(pButton->GetTag());
-	//		if( pListElement != NULL ) pListElement->DoEvent(*(TEventUI*)event);
-	//	}
-	//}
-	//MessageBox(NULL,_T("test"),_T("test"),0);
+static bool OnVoiceButtonEvent(void* event) 
+{
+	if( ((TEventUI*)event)->Type == UIEVENT_BUTTONDOWN ) 
+	{
+		CControlUI* pButton = ((TEventUI*)event)->pSender;
+		if( pButton != NULL ) {
+			CListContainerElementUI* pListElement = (CListContainerElementUI*)(pButton->GetTag());
+			if( pListElement != NULL ) pListElement->DoEvent(*(TEventUI*)event);
+		}
+	}
+	return true;
+}
+
+static bool OnVideoButtonEvent(void* event)
+{
+	if( ((TEventUI*)event)->Type == UIEVENT_BUTTONDOWN )
+	{
+		CControlUI* pButton = ((TEventUI*)event)->pSender;
+		if( pButton != NULL )
+		{
+			//CListContainerElementUI* pListElement = (CListContainerElementUI*)(pButton->GetTag());
+			//if( pListElement != NULL ) pListElement->DoEvent(*(TEventUI*)event);
+			CVideoFrame* pDeskViewer = new CVideoFrame;
+			pDeskViewer->Create(NULL, _T("VideoFrame"), UI_WNDSTYLE_FRAME | WS_POPUP,  NULL, 0, 0, 0, 0);
+			pDeskViewer->CenterWindow();
+			::ShowWindow(*pDeskViewer, SW_MAXIMIZE);
+		}
+	}
 	return true;
 }
 
@@ -211,12 +234,13 @@ Node* CPartiaipantList::AddNode(const PtiptListItemInfo& item, Node* parent)
 		parent = root_node_;
 
 	TCHAR szBuf[MAX_PATH] = {0};
-
     CListContainerElementUI* pListElement = NULL;
-    if( !m_dlgBuilder.GetMarkup()->IsValid() ) {
-        pListElement = static_cast<CListContainerElementUI*>(m_dlgBuilder.Create(_T("friend_list_item.xml"), (UINT)0, NULL, &paint_manager_));
+    if( !m_dlgBuilder.GetMarkup()->IsValid() ) 
+	{
+        pListElement = static_cast<CListContainerElementUI*>(m_dlgBuilder.Create(_T("participant_list_item.xml"), (UINT)0, NULL, &paint_manager_));
     }
-    else {
+    else 
+	{
         pListElement = static_cast<CListContainerElementUI*>(m_dlgBuilder.Create((UINT)0, &paint_manager_));
     }
     if (pListElement == NULL)
@@ -252,17 +276,15 @@ Node* CPartiaipantList::AddNode(const PtiptListItemInfo& item, Node* parent)
 	}
 	pListElement->SetPadding(rcPadding);
 
+
+
 	//logo 
 	CButtonUI* log_button = static_cast<CButtonUI*>(paint_manager_.FindSubControlByName(pListElement, kLogoButtonControlName));
 	if (log_button != NULL)
 	{
 		if (!item.folder && !item.logo.IsEmpty())
 		{
-#if defined(UNDER_WINCE)
-			_stprintf(szBuf, _T("%s"), item.logo);
-#else
 			_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.logo);
-#endif
 			log_button->SetNormalImage(szBuf);
 		}
 		else
@@ -276,21 +298,34 @@ Node* CPartiaipantList::AddNode(const PtiptListItemInfo& item, Node* parent)
         log_button->OnEvent += MakeDelegate(&OnLogoButtonEvent);
 	}
 
+	//voice status
+	CButtonUI* voice_button = static_cast<CButtonUI*>(paint_manager_.FindSubControlByName(pListElement, kVoiceButtonName));
+	if (voice_button != NULL)
+	{
+		if (!item.folder && item.eVideoStatus != PtiptListItemInfo::CAMERA_CLOSE)
+		{
+			//_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.voice_icon);
+			voice_button->SetNormalImage(VoiceEnableImg);
+
+			//_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.voice_icon_hot);
+			voice_button->SetHotImage(VoiceEnableImgHot);
+		}
+		voice_button->SetTag((UINT_PTR)pListElement);
+		//取消打开聊天窗口事件
+		voice_button->OnEvent += MakeDelegate(&OnVoiceButtonEvent);
+	}
+
 	//video status
 	CButtonUI* video_button = static_cast<CButtonUI*>(paint_manager_.FindSubControlByName(pListElement, kVideoButtonName));
 	if (video_button != NULL)
 	{
-		if (!item.folder && !item.video_icon.IsEmpty())
+		if (!item.folder && item.eVideoStatus != PtiptListItemInfo::CAMERA_CLOSE)
 		{
-#if defined(UNDER_WINCE)
-			_stprintf(szBuf, _T("%s"), item.video_icon);
-#else
-			_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.video_icon);
-#endif
-			video_button->SetNormalImage(szBuf);
+			//_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.video_icon);
+			video_button->SetNormalImage(VideoOpenImg);
 
-			_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.video_icon_hot);
-			video_button->SetHotImage(szBuf);
+			//_stprintf_s(szBuf, MAX_PATH - 1, _T("%s"), item.video_icon_hot);
+			video_button->SetHotImage(VideoOpenImgHot);
 		}
 		video_button->SetTag((UINT_PTR)pListElement);
 		//取消打开聊天窗口事件
@@ -352,7 +387,7 @@ Node* CPartiaipantList::AddNode(const PtiptListItemInfo& item, Node* parent)
 //		}
 //	}
 
-	pListElement->SetFixedHeight(kFriendListItemNormalHeight);
+	pListElement->SetFixedHeight(kParticipantListItemNormalHeight);
 	pListElement->SetTag((UINT_PTR)node);
 	int index = 0;
 	if (parent->has_children())
@@ -414,13 +449,8 @@ void CPartiaipantList::SetChildVisible(Node* node, bool visible)
 		else
 			html_text += level_collapse_image_;
 
-#if defined(UNDER_WINCE)
-		_stprintf(szBuf, _T("<x %d>"), level_text_start_pos_);
-#else
 		_stprintf_s(szBuf, MAX_PATH - 1, _T("<x %d>"), level_text_start_pos_);
-#endif
 		html_text += szBuf;
-
 		html_text += node->data().text_;
 
 		CLabelUI* nick_name = static_cast<CLabelUI*>(paint_manager_.FindSubControlByName(node->data().list_elment_, kNickNameControlName));
@@ -468,54 +498,60 @@ bool CPartiaipantList::CanExpand(Node* node) const
 	return node->data().has_child_;
 }
 
+void CPartiaipantList::SetSelectedItemBkColor(DWORD dwBkColor)
+{
+}
+
+void CPartiaipantList::SetHotItemBkColor(DWORD dwBkColor)
+{
+}
+
 bool CPartiaipantList::SelectItem(int iIndex, bool bTakeFocus)
 {
     if( iIndex == m_iCurSel ) return true;
-
     // We should first unselect the currently selected item
-    if( m_iCurSel >= 0 ) {
+    if( m_iCurSel >= 0 ) 
+	{
         CControlUI* pControl = GetItemAt(m_iCurSel);
         if( pControl != NULL) {
             IListItemUI* pListItem = static_cast<IListItemUI*>(pControl->GetInterface(_T("ListItem")));
             if( pListItem != NULL )
 			{
-				CListContainerElementUI* pFriendListItem = static_cast<CListContainerElementUI*>(pControl);
+				CListContainerElementUI* pParticipantListItem = static_cast<CListContainerElementUI*>(pControl);
 				Node* node = (Node*)pControl->GetTag();
-				if ((pFriendListItem != NULL) && (node != NULL) && !node->folder())
+				if ((pParticipantListItem != NULL) && (node != NULL) && !node->folder())
 				{
-					pFriendListItem->SetFixedHeight(kFriendListItemNormalHeight);
-					CContainerUI* pOperatorPannel = static_cast<CContainerUI*>(paint_manager_.FindSubControlByName(pFriendListItem, kOperatorPannelControlName));
-					if (pOperatorPannel != NULL)
-					{
-						pOperatorPannel->SetVisible(false);
-					}
+					pParticipantListItem->SetFixedHeight(kParticipantListItemNormalHeight);
+					//CContainerUI* pOperatorPannel = static_cast<CContainerUI*>(paint_manager_.FindSubControlByName(pParticipantListItem, kOperatorPannelControlName));
+					//if (pOperatorPannel != NULL)
+					//{
+					//	pOperatorPannel->SetVisible(false);
+					//}
 				}
 				pListItem->Select(false);
 			}
         }
-
         m_iCurSel = -1;
     }
 
     if( iIndex < 0 )
 		return false;
-
 	if (!__super::SelectItem(iIndex, bTakeFocus))
 		return false;
 
-
 	CControlUI* pControl = GetItemAt(m_iCurSel);
-	if( pControl != NULL) {
+	if( pControl != NULL)
+	{
 		CListContainerElementUI* pFriendListItem = static_cast<CListContainerElementUI*>(pControl);
 		Node* node = (Node*)pControl->GetTag();
 		if ((pFriendListItem != NULL) && (node != NULL) && !node->folder())
 		{
-			pFriendListItem->SetFixedHeight(kFriendListItemSelectedHeight);
-			CContainerUI* pOperatorPannel = static_cast<CContainerUI*>(paint_manager_.FindSubControlByName(pFriendListItem, kOperatorPannelControlName));
-			if (pOperatorPannel != NULL)
-			{
-				pOperatorPannel->SetVisible(true);
-			}
+			pFriendListItem->SetFixedHeight(kParticipantListItemSelectedHeight);
+			//CContainerUI* pOperatorPannel = static_cast<CContainerUI*>(paint_manager_.FindSubControlByName(pFriendListItem, kOperatorPannelControlName));
+			//if (pOperatorPannel != NULL)
+			//{
+			//	pOperatorPannel->SetVisible(true);
+			//}
 		}
 	}
 	return true;

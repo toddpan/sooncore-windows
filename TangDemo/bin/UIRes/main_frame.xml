@@ -35,14 +35,14 @@
 	  
 	  <HorizontalLayout height="50" >
 		<Button name="participantbtn"  bkimage="file='chlist.gif' corner='1,1,1,1'" width="12" height="12" padding="10,19,0,19"/>
-		<Text name="participantTxt" text="参会人" textcolor="#000000" padding="2,15,0,15" width="30" />
+		<Text name="participantTxt" text="参会人" textcolor="#FF000000" padding="2,15,0,15" width="30" />
 		<Control />
-		<Button name="adduserbtn"  normalimage="file='addUser.png' mask='0x00000000'" hotimage ="file='addUserHover.png' " width="33" height="33" padding="0,7,0,10"/>
+		<Button name="adduserbtn"  normalimage="file='addUser.png'" hotimage ="file='addUserHover.png' " width="33" height="33" padding="0,7,0,10"/>
 	  </HorizontalLayout>
 	  
       <VerticalLayout>
         <TabLayout name="tabs" bkimage="file='bg_chlist.png' corner='2,2,2,2'" inset="0,0,0,0">
-            <FriendList name="participants" header="hidden" itemshowhtml="true" vscrollbar="true"  />
+            <ParticipantList name="participants" header="hidden" itemshowhtml="true" vscrollbar="true" itemselectedbkcolor="#FF209A9D" itemhotbkcolor="#FF209A9D" itemdisabledbkcolor="#FFA7A6AA" />
         </TabLayout> 
       </VerticalLayout>
       <VerticalLayout height="100">
@@ -60,7 +60,7 @@
 				</HorizontalLayout>
 				<HorizontalLayout />
 				<HorizontalLayout padding="0,0,0,0" width="50">
-					<Button  height="20" bKcolor="#40B9BC" text="开启语音" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+					<Button  height="20" bKcolor="#FF40B9BC" text="开启语音" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
 				</HorizontalLayout>
 			</HorizontalLayout>
 			
@@ -69,7 +69,7 @@
         <VerticalLayout height="50" padding="5,5,0,0">
           <HorizontalLayout>
             <HorizontalLayout padding="0, 0, 0, 0">
-              <Button width="40" padding="10, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_novoice.png' mask='0xffffffff'" hotimage="file='icon_novoiceHover.png' mask='0xffffffff'" pushedimage="file='icon_novoiceHover.png' mask='0xffffffff'" />
+              <Button width="40" padding="10, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='images\icon_novoice.png' mask='0xffffffff'" hotimage="file='images\icon_novoiceHover.png' mask='0xffffffff'" pushedimage="file='images\icon_novoiceHover.png' mask='0xffffffff'" />
               <Button width="40" padding="20, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_jiyao.png' mask='0xffffffff'" hotimage="file='icon_jiyaoHover.png' mask='0xffffffff'" pushedimage="file='icon_jiyaoHover.png' mask='0xffffffff'" />
               <Button width="40" padding="20, 0, 0, 0" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='icon_chat.png' mask='0xffffffff'" hotimage="file='icon_chatHover.png' mask='0xffffffff'" pushedimage="file='icon_chat.png' mask='0xffffffff'" />
             </HorizontalLayout>
